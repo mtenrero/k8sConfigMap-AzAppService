@@ -1,10 +1,12 @@
 package main
 
-import(
-"fmt"
-"github.com/mtenrero/k8sconfigmap-azappservice/hello"
+import (
+	"flag"
+	"log"
 )
 
 func main() {
-	fmt.Println(hello.BuildHello())
+	var filePath = flag.String("path", "./configmap.yaml", "Specify ConfigMap file path")
+	flag.Parse()
+	log.Println(filePath)
 }
