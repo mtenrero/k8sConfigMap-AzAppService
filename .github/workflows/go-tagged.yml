@@ -57,3 +57,33 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: true
+      - name: Update Artifacts
+        id: upload-release-asset-darwin
+          uses: actions/upload-release-asset@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above
+            asset_path: ./build/k8sconfigmap-azappservice-darwin-amd64
+            asset_name: k8sconfigmap-azappservice-darwin-amd64
+            asset_content_type: application/octet-stream
+      - name: Update Artifacts
+          id: upload-release-asset-linux
+            uses: actions/upload-release-asset@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above
+              asset_path: ./build/k8sconfigmap-azappservice-linux-amd64
+              asset_name: k8sconfigmap-azappservice-linux-amd64
+              asset_content_type: application/octet-stream
+      - name: Update Artifacts
+          id: upload-release-asset-windows
+            uses: actions/upload-release-asset@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above
+              asset_path: ./build/k8sconfigmap-azappservice-windows-amd64
+              asset_name: k8sconfigmap-azappservice-windows-amd64
+              asset_content_type: application/octet-stream
