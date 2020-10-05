@@ -1,6 +1,7 @@
 # VARIABLES
 PACKAGE="github.com/mtenrero/k8sconfigmap-azappservice"
 BINARY_NAME="k8sconfigmap-azappservice"
+COMPILE_PATH="./build/"
 
 EXECUTABLES = git go find pwd
 PLATFORMS=darwin linux windows
@@ -32,7 +33,7 @@ build:
 
 build_all:
 	$(foreach GOOS, $(PLATFORMS),\
-	$(foreach GOARCH, $(ARCHITECTURES), $(export GOOS=$(GOOS), export GOARCH=$(GOARCH), shell go build -v -o $(BINARY_NAME)-$(GOOS)-$(GOARCH))))
+	$(foreach GOARCH, $(ARCHITECTURES), $(shell export GOOS=$(GOOS); export GOARCH=$(GOARCH); go build -v -o $(COMPILE_PATH)$(BINARY_NAME)-$(GOOS)-$(GOARCH))))
 
 usage: ## List available targets
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
