@@ -7,11 +7,13 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/mtenrero/k8sconfigmap-azappservice)](https://goreportcard.com/report/github.com/mtenrero/k8sconfigmap-azappservice)
 [![Latest Release](https://badgen.net/github/release/mtenrero/k8sconfigmap-azappservice/stable)](https://badgen.net/github/release/mtenrero/k8sconfigmap-azappservice/stable)
 
-This CLI executable program, transform a given Kubernetes ConfigMap into a JSON object ready to consume by Azure
+This CLI executable program, transforms a given Kubernetes ConfigMap into a JSON object ready to consume by Azure
 AppService container as environment variables.
 
 It's quite useful for avoiding to maintain multiple config files if you have hybrid deployment with kubernetes and 
 Azure App Service containers.
+
+![Diagram](./.github/ConfigMap2.png)
 
 ## Usage
 
