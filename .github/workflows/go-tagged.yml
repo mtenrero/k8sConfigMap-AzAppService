@@ -35,6 +35,15 @@ jobs:
       - name: Test
         run: go test -v .
 
+      - name: Coverage
+        run: go test -v -coverprofile=profile.cov ./...
+
+      - name: SendCoverage
+        uses: shogo82148/actions-goveralls@v1
+        with:
+          flag-name: ${{ github.ref }}
+          path-to-profile: profile.cov
+
       - name: Build
         run: make build_all
 
@@ -44,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: main-${{ github.ref }}
           release_name: Release ${{ github.ref }}
           draft: false
-          prerelease: false
+          prerelease: true

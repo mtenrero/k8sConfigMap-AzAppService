@@ -42,6 +42,7 @@ jobs:
     - name: SendCoverage
       uses: shogo82148/actions-goveralls@v1
       with:
+        flag-name: ${{ github.ref }}
         path-to-profile: profile.cov
 
     - name: Build
@@ -54,6 +55,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions
       with:
         tag_name: main-${{ github.run_id }}
-        release_name: Release ${{ github.ref }}
+        release_name: PreRelease ${{ github.run_id }}
         draft: false
         prerelease: true
