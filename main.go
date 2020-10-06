@@ -33,6 +33,6 @@ func main() {
 	if err != nil {
 		log.Println("Succeeded! :)")
 	} else {
-		log.Fatal("Error writing file to disk!!")
+		log.Println(err)
 	}
 }
