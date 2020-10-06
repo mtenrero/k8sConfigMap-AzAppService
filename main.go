@@ -30,9 +30,9 @@ func main() {
 
 	log.Println("Writing result to the temporary file...")
 	err = ioutil.WriteFile(*outPath, jsonBytes, 0644)
-	if err != nil {
+	if err == nil {
 		log.Println("Succeeded! :)")
 	} else {
-		log.Println(err)
+		log.Fatal(err)
 	}
 }
